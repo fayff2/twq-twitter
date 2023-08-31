@@ -5,5 +5,4 @@ function Home() {
     <div>BAndar</div>
   )
 }
-
 export default Home
