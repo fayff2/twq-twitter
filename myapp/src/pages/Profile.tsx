@@ -1,5 +1,31 @@
 import React from 'react'
 import axios from "axios"
+
+import {
+  HiOutlinePhotograph,
+} from 'react-icons/hi';
+import {
+  CiLocationOn,
+} from 'react-icons/ci';
+import {
+  AiOutlineFileGif,
+  AiOutlineHeart,
+  AiOutlineShareAlt,
+} from 'react-icons/ai';
+
+import {
+  FaRegComment,
+  FaRetweet,
+} from 'react-icons/fa';
+import {
+  BiBarChart,
+} from 'react-icons/bi';
+
+const userInfo={
+    username:"react",
+    name:"React"
+}
+
 type Itweet = {
   tweet:string;
 }
@@ -39,8 +65,8 @@ function Profile() {
         {/* information */}
 
         <div className='flex flex-col  mr-3 '>
-          <p className='text-sm font-bold'>React</p>
-          <p className='text-xs text-slate-400 mb-1'>react@</p>
+          <p className='text-sm font-bold'>{userInfo.name}</p>
+          <p className='text-xs text-slate-400 mb-1'>@{userInfo.username}</p>
           <div className='flex gap-2'>
             <div className='flex'>
               <img className='w-3 ' src="./src/assets/loc.svg" alt="" />
@@ -65,7 +91,7 @@ function Profile() {
 
         {/* list */}
 
-        <div className='flex gap-5 text-xs justify-center mt-5'>
+        <div className='flex gap-5 text-xs justify-center mt-5 mb-2'>
           <button onClick={()=> showData()} >المنشورات</button>
           <button>الردود</button>
           <button>المميزة</button>
@@ -83,8 +109,8 @@ function Profile() {
 <div className=" border bg-white  w-full">
   <div className="title flex justify-between mx-5 my-2">
     <div className="flex justify-center items-center gap-1 ">
-    {/* <img src={img} alt="" className='rounded-full w-10 h-10'/>
-    <div className="">  <span className="text-zinc-600">fay@</span>   <span className="font-bold">Fay Aldossri</span></div> */}
+    <img src="./src/assets/react-logo.png" alt="" className='rounded-full w-10 h-10'/>
+    <div className="" lang='en' dir='ltr'>  <span className="text-zinc-600">@{userInfo.username}</span>   <span className="font-bold">{userInfo.name}</span></div>
     </div>
     <div className="">
       ...
@@ -93,7 +119,7 @@ function Profile() {
   <div className="">
   <p className="text-black m-5">{item.tweet}</p>
   </div>
-  <div className="flex gap-20 mx-5 my-2 text-neutral-500 justify-center items-center text-xl">
+  <div className="flex gap-10 mx-5 my-2 text-neutral-500 justify-center items-center text-xl">
     <span><FaRegComment/></span>
     <span><FaRetweet/></span>
     <span><AiOutlineHeart/></span>
