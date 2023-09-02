@@ -40,6 +40,13 @@ function Profile() {
     })
      
  }
+ const editInf= () => {
+  const [name, setName]= React.useState(userInfo.name)
+  setName("mmm")
+  
+ }
+
+ 
 
  
   return (
@@ -48,7 +55,7 @@ function Profile() {
 
     <div className='h-screen flex  flex-col '>
 
-      <div className='border border-slate-200 w-80 h-72 '>
+      <div className='border border-slate-200 w-96 h-auto '>
         {/* header photo */}
         <div className='border border-slate-400 '>
           <img className='' src="./src/assets/react_header.png" alt="" />
@@ -59,7 +66,11 @@ function Profile() {
               <img className='rounded-full w-auto h-14' src="./src/assets/react-logo.png" alt="" />
           </div>
           <div>
-            <button className='text-xs ml-3 rounded-full border border-slate-400 p-1 mt-1'>تعديل الملف الشخصي</button>
+            <button className='text-xs ml-3 rounded-full border border-slate-400 p-1 mt-1'
+            onChange={() => {editInf()}}
+            >
+              تعديل الملف الشخصي
+            </button>
           </div>
         </div>
         {/* information */}
@@ -91,7 +102,7 @@ function Profile() {
 
         {/* list */}
 
-        <div className='flex gap-5 text-xs justify-center mt-5 mb-2'>
+        <div className='flex gap-8 text-xs justify-center mt-5 mb-2'>
           <button onClick={()=> showData()} >المنشورات</button>
           <button>الردود</button>
           <button>المميزة</button>
@@ -103,7 +114,7 @@ function Profile() {
 
       </div> 
 
-      <div className="h-screen overflow-scroll w-80">
+      <div className="h-screen overflow-scroll w-96">
  {inputTweet.map((item)=>(
 
 <div className=" border bg-white  w-full">
@@ -119,7 +130,7 @@ function Profile() {
   <div className="">
   <p className="text-black m-5">{item.tweet}</p>
   </div>
-  <div className="flex gap-10 mx-5 my-2 text-neutral-500 justify-center items-center text-xl">
+  <div className="flex gap-14 mx-5 my-2 text-neutral-500 justify-center items-center text-xl">
     <span><FaRegComment/></span>
     <span><FaRetweet/></span>
     <span><AiOutlineHeart/></span>
