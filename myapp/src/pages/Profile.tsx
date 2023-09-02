@@ -34,6 +34,7 @@ function Profile() {
   const showData=()=> {
     axios.get("https://64ec68e3f9b2b70f2bfa43c4.mockapi.io/tweets")
     .then((res)=>{
+      
      console.log(res.data)
      setInputTweet(res.data)
 
@@ -116,7 +117,7 @@ function Profile() {
 
       <div className="h-screen overflow-scroll w-96">
  {inputTweet.map((item)=>(
-
+  
 <div className=" border bg-white  w-full">
   <div className="title flex justify-between mx-5 my-2">
     <div className="flex justify-center items-center gap-1 ">
@@ -133,13 +134,18 @@ function Profile() {
   <div className="flex gap-14 mx-5 my-2 text-neutral-500 justify-center items-center text-xl">
     <span><FaRegComment/></span>
     <span><FaRetweet/></span>
-    <span><AiOutlineHeart/></span>
+    <button
+      onChange={}
+    >
+      <AiOutlineHeart/>
+      </button>
     <span><BiBarChart/></span>
     <span><AiOutlineShareAlt/></span>
   </div>
 
 
 </div>
+
 
 ))}
 
