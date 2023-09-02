@@ -1,6 +1,22 @@
 import React from 'react'
+import axios from React
 
 function Profile() {
+
+
+//   const getTweet =()=> {
+//     axios.get("https://64ec68e3f9b2b70f2bfa43c4.mockapi.io/tweets")
+//  .then((res)=>{
+//      console.log(res.data)
+//      setInputTweet(res.data)
+
+//     })
+     
+//  }
+
+//  React.useEffect(()=>{
+//   getTweet()
+// },[]);
 
 
 
