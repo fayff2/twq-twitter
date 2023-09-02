@@ -18,8 +18,9 @@ function Profile() {
  
   return (
     <>
+    <div className='flex justify-center'>
 
-    <div className='h-screen flex justify-center'>
+    <div className='h-screen flex  flex-col '>
 
       <div className='border border-slate-200 w-80 h-72 '>
         {/* header photo */}
@@ -66,21 +67,53 @@ function Profile() {
 
         <div className='flex gap-5 text-xs justify-center mt-5'>
           <button onClick={()=> showData()} >المنشورات</button>
-          <a href="">الردود</a>
-          <a href="">المميزة</a>
-          <a href="">الوسائط</a>
-          <a href="">الإعجابات</a>
+          <button>الردود</button>
+          <button>المميزة</button>
+          <button>الوسائط</button>
+          <button>الإعجابات</button>
         </div>
 
 
 
       </div> 
+
+      <div className="h-screen overflow-scroll w-80">
+ {inputTweet.map((item)=>(
+
+<div className=" border bg-white  w-full">
+  <div className="title flex justify-between mx-5 my-2">
+    <div className="flex justify-center items-center gap-1 ">
+    {/* <img src={img} alt="" className='rounded-full w-10 h-10'/>
+    <div className="">  <span className="text-zinc-600">fay@</span>   <span className="font-bold">Fay Aldossri</span></div> */}
+    </div>
+    <div className="">
+      ...
+    </div>
+  </div>
+  <div className="">
+  <p className="text-black m-5">{item.tweet}</p>
+  </div>
+  <div className="flex gap-20 mx-5 my-2 text-neutral-500 justify-center items-center text-xl">
+    <span><FaRegComment/></span>
+    <span><FaRetweet/></span>
+    <span><AiOutlineHeart/></span>
+    <span><BiBarChart/></span>
+    <span><AiOutlineShareAlt/></span>
+  </div>
+
+
+</div>
+
+))}
+
+</div> 
     </div>
 
     
     
     
     
+    </div>
     </>
   )
 }
