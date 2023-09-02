@@ -1,22 +1,23 @@
 import React from 'react'
-import axios from React
+import axios from "axios"
 
 function Profile() {
+  const[inputTweet , setInputTweet] = React.useState<Itweet[]>([])
 
 
-//   const getTweet =()=> {
-//     axios.get("https://64ec68e3f9b2b70f2bfa43c4.mockapi.io/tweets")
-//  .then((res)=>{
-//      console.log(res.data)
-//      setInputTweet(res.data)
+  const getTweet =()=> {
+    axios.get("https://64ec68e3f9b2b70f2bfa43c4.mockapi.io/tweets")
+ .then((res)=>{
+     console.log(res.data)
+     setInputTweet(res.data)
 
-//     })
+    })
      
-//  }
+ }
 
-//  React.useEffect(()=>{
-//   getTweet()
-// },[]);
+ React.useEffect(()=>{
+  getTweet()
+},[]);
 
 
 
@@ -81,6 +82,24 @@ function Profile() {
 
 
       </div> 
+    </div>
+
+    
+    <div className="h-screen overflow-scroll w-full">
+      {inputTweet.map((item)=>(
+
+      <div className=" border bg-white overflow-scroll w-full">
+    <div className="title flex justify-between mx-5 my-2">
+      <div className="flex justify-center items-center gap-1 ">
+      {/* <img src={img} alt="" className='rounded-full w-10 h-10'/>
+      <div className="">  <span className="text-zinc-600">fay@</span>   <span className="font-bold">Fay Aldossri</span></div> */}
+      </div>
+      <div className="">
+        ...
+      </div>
+    </div>
+    <div className="content">
+    <p className="text-black m-5">{item.tweet}</p>
     </div>
     
     
