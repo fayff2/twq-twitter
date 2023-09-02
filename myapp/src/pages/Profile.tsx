@@ -3,14 +3,11 @@ import axios from "axios"
 type Itweet = {
   tweet:string;
 }
-
 function Profile() {
   const[inputTweet , setInputTweet] = React.useState<Itweet[]>([])
-
-
-  const getTweet =()=> {
+  const showData=()=> {
     axios.get("https://64ec68e3f9b2b70f2bfa43c4.mockapi.io/tweets")
- .then((res)=>{
+    .then((res)=>{
      console.log(res.data)
      setInputTweet(res.data)
 
@@ -18,14 +15,7 @@ function Profile() {
      
  }
 
- React.useEffect(()=>{
-  getTweet()
-},[]);
-
-
-
-
-
+ 
   return (
     <>
 
@@ -75,7 +65,7 @@ function Profile() {
         {/* list */}
 
         <div className='flex gap-5 text-xs justify-center mt-5'>
-          <a href="">المنشورات</a>
+          <button onClick={()=> showData()} >المنشورات</button>
           <a href="">الردود</a>
           <a href="">المميزة</a>
           <a href="">الوسائط</a>
