@@ -1,6 +1,10 @@
 import React from 'react'
 import axios from "axios"
 
+
+type Itweet = {
+  tweet:string;
+}
 function Profile() {
   const[inputTweet , setInputTweet] = React.useState<Itweet[]>([])
 
@@ -101,10 +105,14 @@ function Profile() {
     <div className="content">
     <p className="text-black m-5">{item.tweet}</p>
     </div>
+      )}
+
+    </div>
+    )}
     
     
     </>
-  )
-}
+  )}
+
 
 export default Profile
