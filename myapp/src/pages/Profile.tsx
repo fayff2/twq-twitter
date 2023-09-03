@@ -135,7 +135,7 @@ function Profile() {
     <span><FaRegComment/></span>
     <span><FaRetweet/></span>
     <button
-      onChange={}
+      
     >
       <AiOutlineHeart/>
       </button>
