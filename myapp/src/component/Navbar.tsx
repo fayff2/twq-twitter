@@ -18,6 +18,7 @@ import {
 import icon from '../assets/email.png'
 
 import {
+  FiLogOut,
   
 } from 'react-icons/fi';
 
@@ -106,7 +107,7 @@ const Navbar = () => {
       نشر
       </button>
       <div className="mt-20">
-<button onClick={logout}>Logout</button>
+<button onClick={logout}> <FiLogOut/></button>
 </div>
               
       </div>

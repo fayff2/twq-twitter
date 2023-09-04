@@ -2,6 +2,7 @@ import axios from "axios";
 import Navbar from "../component/Navbar"
 import { useEffect, useState } from "react";
 import img from '../assets/pexels-vincenzo-giove-1928645.jpg'
+// import { Link } from "react-router-dom";
 
 import {
   HiOutlinePhotograph,
@@ -23,12 +24,17 @@ import {
   BiBarChart,
 } from 'react-icons/bi';
 
-
+import {
+  FcLike,
+} from 'react-icons/fc';
 
 
 
 type Itweet = {
   tweet:string;
+  id:string;
+  like:boolean;
+  
 }
 function Home() {
 
@@ -41,16 +47,24 @@ function Home() {
   // const userName = localStorage.getItem("userName")
   // console.log(userName)
   const[inputTweet , setInputTweet] = useState<Itweet[]>([])
+  const [isActive , setIsActive]= useState<boolean>(false);
 
     const [tweet ,setTweet] = useState <Itweet>({
        tweet:"" ,
-       
+       id: "",
+       like:false,
     })
 
+    useEffect(()=>{
+      getTweet()
+    },[]);
+  
 
   const postTweet = ()=> {
     axios.post("https://64ec68e3f9b2b70f2bfa43c4.mockapi.io/tweets",{
      tweet:tweet.tweet,
+     like:tweet.like,
+     
     }).then(()=>{
      getTweet()
     }).catch(err=> console.log(err))
@@ -66,10 +80,26 @@ function Home() {
        
    }
  
-   useEffect(()=>{
-    getTweet()
-  },[]);
+   const like = (id:string)=>{
+    axios.put(`https://64ec68e3f9b2b70f2bfa43c4.mockapi.io/tweets/${id}`,{
+       like:true,
+    }).then((res)=>{
+    console.log(res)
+  
+    })
+   }
+  
 
+  const delbtn =(id:string)=>{
+    axios.delete(`https://64ec68e3f9b2b70f2bfa43c4.mockapi.io/tweets/${id}`)
+    .then((res)=>{
+        console.log(res)
+        setInputTweet(inputTweet.filter((del)=>{
+            return del.id !==id;
+
+        }))
+    })
+}
 
 
   return (<>
@@ -117,7 +147,7 @@ function Home() {
     <div className="">  <span className="text-zinc-600">fay@</span>   <span className="font-bold">Fay Aldossri</span></div>
     </div>
     <div className="">
-      ...
+     <p className="cursor-pointer"  onClick={()=>delbtn(item.id)}>...</p> 
     </div>
   </div>
   <div className="content">
@@ -126,8 +156,14 @@ function Home() {
   <div className="flex gap-20 mx-5 my-2 text-neutral-500 justify-center items-center text-xl">
     <span><FaRegComment/></span>
     <span><FaRetweet/></span>
-    <span><AiOutlineHeart/></span>
-    <span><BiBarChart/></span>
+  
+  
+    <button className=" cursor-pointer" onClick={()=>{localStorage.setItem("id",item.id),like(item.id)}}>
+    {/* <span><AiOutlineHeart/></span></button> */} {item.like?(<FcLike/> ) : (<AiOutlineHeart/>)} </button>
+    
+    <span ><BiBarChart/></span>
+   
+  
     <span><AiOutlineShareAlt/></span>
   </div>
 
